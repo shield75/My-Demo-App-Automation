@@ -121,3 +121,11 @@ Potential future env vars (not yet supported by code):
 No explicit LICENSE file found in the repository.
 
 TODO: Add a LICENSE file (e.g., MIT, Apache-2.0) to clarify usage and contributions.
+
+
+## Submission Summary (PDF-ready)
+A concise, submission-ready write-up (thought process, approach/methodology, steps, achievements, and links) is available here:
+- docs/Submission_Summary.md
+
+To export to PDF, open the Markdown in a viewer (e.g., GitHub) and use Print → Save as PDF, or use pandoc:
+- `pandoc -s docs/Submission_Summary.md -o docs/Submission_Summary.pdf`
