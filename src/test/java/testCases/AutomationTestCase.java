@@ -87,10 +87,10 @@ public class AutomationTestCase extends BasePage {
     public void automationTestCase(String username, String password) throws InterruptedException {
 
         verifyLogin(username, password);
-       /* verifySortingFunctionality(nameAscending);
+        verifySortingFunctionality(nameAscending);
         verifySortingFunctionality(nameDescending);
         verifySortingFunctionality(prizeAscending);
-        verifySortingFunctionality(prizeDescending);*/
+        verifySortingFunctionality(prizeDescending);
         verifyProductPage(2);
         verifyQuantity(3);
         verifyCartBadgeCount();
@@ -175,9 +175,8 @@ public class AutomationTestCase extends BasePage {
     public void verifyProductPage(int productIndex){
         fluentTapOnElement(pages.getCatalogPage().openMenu, 5);
         fluentTapOnElement(pages.getCatalogPage().catalogOption, 5);
-        //
-        // fluentTapOnElement(pages.getCatalogPage().sortButton,5);
-        //fluentTapOnElement(pages.getCatalogPage().sortByNameAscending,5);
+        fluentTapOnElement(pages.getCatalogPage().sortButton,5);
+        fluentTapOnElement(pages.getCatalogPage().sortByNameAscending,5);
         fluentTapOnElement(pages.getCatalogPage().storeItems.get(productIndex-1),5);
         waitForElementVisibility(pages.getProductPage().addToCartButton, 5);
         softAssert.assertTrue(isElementVisible(pages.getProductPage().addToCartButton), "Specific product details page is not visible");

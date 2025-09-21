@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Submission Summary — My Demo App Automation (Android)</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --panel: #111827;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --accent: #60a5fa;
+      --code: #1f2937;
+      --border: #374151;
+      --good: #10b981;
+    }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", sans-serif;
+      background: linear-gradient(180deg, #0b1220, #0f172a);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    .container {
+      max-width: 980px;
+      margin: 40px auto;
+      padding: 24px;
+      background: linear-gradient(180deg, #0d1324, #121a2e);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.04);
+    }
+    .title {
+      font-size: 28px;
+      margin: 0 0 8px 0;
+      letter-spacing: 0.3px;
+      background: linear-gradient(90deg, #fff, #d1d5db);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .subtitle {
+      margin: 0 0 20px 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    h2 { margin-top: 28px; font-size: 20px; }
+    h3 { margin-top: 18px; font-size: 16px; }
+    p, li { line-height: 1.65; }
+    code, pre { background: var(--code); color: #d1fae5; border-radius: 8px; }
+    pre { padding: 14px; overflow: auto; border: 1px solid var(--border); }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 8px 18px;
+      margin: 16px 0 8px 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .panel {
+      background: rgba(17,24,39,0.6);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin: 10px 0 16px 0;
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(96,165,250,0.15);
+      border: 1px solid rgba(96,165,250,0.35);
+      color: #cfe8ff;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      margin-right: 8px;
+    }
+    .good { color: var(--good); }
+    hr { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
+    .download-note { font-size: 13px; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="badge">Android</div>
+    <div class="badge">Appium + TestNG</div>
+    <h1 class="title">Project Submission Summary — My Demo App Automation (Android)</h1>
+    <p class="subtitle">A concise project overview ready to view in the browser or download as HTML/PDF.</p>
+
+    <div class="meta">
+      <div><strong>GitHub:</strong> <a href="https://github.com/shield75/My-Demo-App-Automation" target="_blank" rel="noopener">github.com/shield75/My-Demo-App-Automation</a></div>
+      <div><strong>Author:</strong> Anisur Rahman</div>
+      <div><strong>Date:</strong> 2025-09-21</div>
+      <div><strong>Platform:</strong> Android</div>
+      <div><strong>Primary Tools:</strong> Java, Maven, TestNG, Appium (UiAutomator2), Selenium, Allure, Appium Inspector, Appium Server 2.x</div>
+    </div>
+
+    <div class="panel">
+      <p class="download-note">Tip: To download, open this file in a browser and use “Save As…” (Web Page, Complete) for HTML or Print → Save as PDF for a PDF copy.</p>
+    </div>
+
+    <h2>1) Thought Process</h2>
+    <ul>
+      <li>Start from the business flow the stakeholder cares about: a successful shopper journey from login to logout.</li>
+      <li>Use Page Object Model to keep UI interactions maintainable and readable.</li>
+      <li>Keep configuration externalized (capabilities.properties) so device/app details don’t require code changes.</li>
+      <li>Make the runner stable and observable: TestNG for structure + Allure for rich reporting.</li>
+      <li>Implement robust interaction helpers (waits, fluent taps, safe text entry) to mitigate mobile UI timing issues.</li>
+      <li>Validate not only navigation but also data integrity (quantities, totals, and order review details).</li>
+    </ul>
+
+    <h2>2) Approach and Methodology</h2>
+    <ul>
+      <li><strong>Test Design:</strong> One main end-to-end regression scenario exercising the full purchase flow with soft assertions to accumulate validation points before failing.</li>
+      <li><strong>Architecture:</strong> Page Object Model (pages/*) + a central PageObjectManager + DriverManager for lifecycle and capabilities binding.</li>
+      <li><strong>Configuration:</strong> <code>src/test/resources/capabilities.properties</code> provides device/app under test parameters; Appium endpoint local default.</li>
+      <li><strong>Tooling:</strong>
+        <ul>
+          <li>Appium 2.x server (CLI) with UiAutomator2 driver for Android.</li>
+          <li>Appium Inspector for element discovery and locator verification.</li>
+          <li>Allure for reporting, with annotations (Epic, Feature, Story, Owner, Severity, Step, Description) for clarity.</li>
+        </ul>
+      </li>
+      <li><strong>Execution:</strong> TestNG suite invoked by Maven Surefire; results collected into <code>allure-results</code> and optionally rendered to a report site.</li>
+    </ul>
+
+    <h2>3) Steps Taken to Complete the Tasks</h2>
+    <ol>
+      <li>
+        <strong>Environment setup</strong>
+        <ul>
+          <li>Installed Java JDK 16+, Maven, Android SDK (adb), Node.js, and Appium Server 2.x.</li>
+          <li>Installed Appium UiAutomator2 driver: <code>appium driver install uiautomator2</code>.</li>
+          <li>Verified device/emulator connectivity via <code>adb devices</code>.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Project configuration</strong>
+        <ul>
+          <li>Declared dependencies in pom.xml: TestNG, Appium Java Client, Selenium, Allure, and SLF4J.</li>
+          <li>Configured Maven Surefire to run <code>src/test/resources/testng.xml</code> and to store results in <code>allure-results</code>.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Capability management</strong>
+        <ul>
+          <li>Centralized device/app capabilities in <code>src/test/resources/capabilities.properties</code> (platformName, udid, deviceName, appPackage, appActivity, automationName).</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Driver lifecycle</strong>
+        <ul>
+          <li>Implemented DriverManager to create an AndroidDriver with UiAutomator2Options and an implicit wait.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Page Object Model</strong>
+        <ul>
+          <li>Built BasePage with reusable methods (explicit waits, fluent tap, inputText, price parsing, scrolls, etc.).</li>
+          <li>Implemented page objects for Login, Catalog, Product, Cart, Checkout, Payment, Review, Confirmation, and shared elements.</li>
+          <li>Added PageObjectManager for lazy initialization of page classes.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Test case authoring</strong>
+        <ul>
+          <li>Wrote <code>AutomationTestCase</code> with a data provider for login credentials.</li>
+          <li>Encoded a full purchase flow with intermediate validations and Allure steps.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Reporting</strong>
+        <ul>
+          <li>Added Allure integration (dependency + annotations). Reports generated from <code>allure-results</code> via CLI or Maven plugin.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Validation &amp; Iteration</strong>
+        <ul>
+          <li>Used Appium Inspector to validate locators and interactions against the real app.</li>
+          <li>Stabilized interactions by adding waits and retry logic.</li>
+        </ul>
+      </li>
+    </ol>
+
+    <h2>4) Final Achievements</h2>
+    <ul>
+      <li>Automates a realistic end-to-end shopping scenario on Android including:
+        <ul>
+          <li>Login, catalog navigation, sorting checks, multi-item cart operations, checkout, payment details input, order review and confirmation, and logout.</li>
+        </ul>
+      </li>
+      <li>Clean separation of concerns using Page Object Model for maintainability.</li>
+      <li>Reusable utilities for robust and readable interactions.</li>
+      <li>Friendly reporting with Allure (narrative + screenshots-ready).</li>
+      <li>Easy configuration via properties without code changes.</li>
+    </ul>
+
+    <h2>5) Test Case Flow (as executed)</h2>
+    <p><strong>Task:</strong></p>
+    <ol>
+      <li>Log in</li>
+      <li>Go to Catalog</li>
+      <li>Sort by Name - Any</li>
+      <li>Sort by Price - Any</li>
+      <li>Add 2nd product to cart - qty 3</li>
+      <li>Add 3rd Product to Cart - qty 2</li>
+      <li>Add 5th Product to Cart - qty 1</li>
+      <li>Go to Cart</li>
+      <li>Decrease 1st Product</li>
+      <li>Increase 3rd Product</li>
+      <li>Remove 2nd Product</li>
+      <li>Proceed to Checkout</li>
+      <li>Complete the checkout process</li>
+      <li>Log Out</li>
+    </ol>
+    <p>Note: The concrete steps and assertions are implemented in <code>src/test/java/testCases/AutomationTestCase.java</code> and POM classes under <code>src/test/java/pages</code>.</p>
+
+    <h2>6) Tools and How They Were Used</h2>
+    <ul>
+      <li><strong>Appium Server 2.x (CLI)</strong> — runs the automation server.
+        <ul>
+          <li>Install via npm: <code>npm install -g appium</code></li>
+          <li>Install Android driver: <code>appium driver install uiautomator2</code></li>
+          <li>Start server (default): <code>appium</code></li>
+        </ul>
+      </li>
+      <li><strong>Appium Inspector</strong> — used to inspect the app, validate locators and actions.</li>
+      <li><strong>Java + Maven</strong> — language and build system.</li>
+      <li><strong>TestNG</strong> — test runner and structure.</li>
+      <li><strong>Selenium / Appium Java Client</strong> — device automation APIs.</li>
+      <li><strong>Allure</strong> — results and reporting.</li>
+    </ul>
+
+    <h2>7) Setup &amp; Run (Quick Start)</h2>
+    <ol>
+      <li>
+        <strong>Prerequisites</strong>
+        <ul>
+          <li>JDK 16+, Maven 3.8+, Android SDK (adb in PATH)</li>
+          <li>Node.js and Appium 2.x installed</li>
+          <li>A device/emulator connected and unlocked</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Configure capabilities</strong>
+        <pre><code>platformName=Android
+udid=&lt;your_device_udid&gt;
+deviceName=&lt;your_device_name&gt;
+appPackage=com.saucelabs.mydemoapp.rn
+appActivity=com.saucelabs.mydemoapp.rn.MainActivity
+automationName=UiAutomator2</code></pre>
+      </li>
+      <li>
+        <strong>Run</strong>
+        <ul>
+          <li>Start Appium server: <code>appium</code></li>
+          <li>Execute: <code>mvn clean test</code></li>
+          <li>Generate report: <code>mvn allure:report</code> then open <code>target/site/allure-maven-plugin/index.html</code></li>
+        </ul>
+      </li>
+    </ol>
+
+    <h2>8) Special Features</h2>
+    <ul>
+      <li>Robust interaction helpers (fluent tap, explicit waits) to reduce flakiness.</li>
+      <li>Soft assertions to continue validations within a single scenario.</li>
+      <li>Page Object Model with centralized manager for reuse.</li>
+      <li>Allure annotations for story-level traceability and rich reports.</li>
+      <li>Ready to extend for additional scenarios (e.g., negative login, network resiliency).</li>
+    </ul>
+
+    <p class="download-note">Images/Screenshots: Not included at this time.</p>
+
+    <h2>9) Exporting this Document</h2>
+    <ul>
+      <li>Save as HTML: Use your browser’s File → Save Page As… (choose Web Page, Complete).</li>
+      <li>Export to PDF: Use your browser’s Print → Save as PDF.</li>
+    </ul>
+
+    <h2>10) References</h2>
+    <ul>
+      <li>Repository: <a href="https://github.com/shield75/My-Demo-App-Automation" target="_blank" rel="noopener">https://github.com/shield75/My-Demo-App-Automation</a></li>
+      <li>Appium: <a href="https://appium.io" target="_blank" rel="noopener">https://appium.io</a></li>
+      <li>TestNG: <a href="https://testng.org" target="_blank" rel="noopener">https://testng.org</a></li>
+      <li>Allure: <a href="https://docs.qameta.io/allure/" target="_blank" rel="noopener">https://docs.qameta.io/allure/</a></li>
+    </ul>
+  </div>
+</body>
+</html>

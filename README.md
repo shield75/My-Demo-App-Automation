@@ -123,9 +123,10 @@ No explicit LICENSE file found in the repository.
 TODO: Add a LICENSE file (e.g., MIT, Apache-2.0) to clarify usage and contributions.
 
 
-## Submission Summary (PDF-ready)
+## Submission Summary (Downloadable)
 A concise, submission-ready write-up (thought process, approach/methodology, steps, achievements, and links) is available here:
-- docs/Submission_Summary.md
+- Markdown: docs/Submission_Summary.md
+- HTML (open in browser to view or File → Save As to download): docs/Submission_Summary.html
 
-To export to PDF, open the Markdown in a viewer (e.g., GitHub) and use Print → Save as PDF, or use pandoc:
+To export to PDF, open the HTML or Markdown in a browser and use Print → Save as PDF, or use pandoc:
 - `pandoc -s docs/Submission_Summary.md -o docs/Submission_Summary.pdf`
